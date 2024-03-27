@@ -1,0 +1,23 @@
+version: '3.9'
+
+volumes:
+  mongo-data:
+
+services:
+  # MongoDB service
+  mongodb:
+    image: mongodb/mongodb-community-server:latest
+    ports:
+      - "27017:27017"  # Map host port 27017 to container port 27017 (standard MongoDB port)
+    volumes:
+      - mongo-data:/data/db  # Persist MongoDB data using a named volume
+
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   command: /bin/sh -c "node index.js"
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - "3000:3000"
